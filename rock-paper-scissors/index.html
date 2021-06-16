@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Rock-Paper-Scissiors</title>
+  </head>
+  <body>
+    <script>
+      const computerPlay = function () {
+        let arr = ["ROCK", "PAPER", "SCISSORS"];
+        let randomValue = Math.floor(Math.random() * 3);
+        return arr[randomValue];
+      };
+      const computerSelection = computerPlay();
+      const enteredValue = prompt(
+        "Enter your choice from ROCK , PAPER &  SCISSORS :"
+      );
+      const playerSelection = enteredValue.toUpperCase();
+      let result = "";
+      let compCounter = 0;
+      let playerCounter = 0;
+      function playRound(playerSelection, computerSelection) {
+        console.log("You selected: " + playerSelection);
+        if (playerSelection === "ROCK") {
+          if (computerSelection === "ROCK") {
+            result = "Tie!!";
+          } else if (computerSelection === "PAPER") {
+            result = "You Lose! Paper beats Rock";
+            compCounter++;
+          } else if (computerSelection === "SCISSORS") {
+            result = "You Win! Rock beats Scissiors";
+            playerCounter++;
+          }
+        } else if (playerSelection === "PAPER") {
+          if (computerSelection === "ROCK") {
+            result = "You Win! Paper beats Rock";
+            playerCounter++;
+          } else if (computerSelection === "PAPER") {
+            result = "Tie!";
+          } else if (computerSelection === "SCISSORS") {
+            result = "You lose! Scissiors beats Paper";
+            compCounter++;
+          }
+        } else if (playerSelection === "SCISSORS") {
+          if (computerSelection === "ROCK") {
+            result = "You lose! Rock beats Scissors";
+            compCounter++;
+          } else if (computerSelection === "PAPER") {
+            result = "You Win! Scissors beats Rock";
+            playerCounter++;
+          } else if (computerSelection === "SCISSORS") {
+            result = "Tie!";
+          }
+        } else {
+          result = "please enter your selection correctly.";
+        }
+        console.log("Your Score: " + playerCounter);
+        console.log("Computer Score: " + compCounter);
+        return result;
+      }
+
+      console.log(playRound(playerSelection, computerSelection));
+    </script>
+  </body>
+</html>
